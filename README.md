@@ -2,17 +2,36 @@
 mvn clean compile assembly:single
 ```
 
-example config:
+### example config:
+
 ```json
 {
-    "source":{
-        "type":"http",
-        "method":"GET",
-        "url":"https://otc.safjijfaeiofjfoiofwjf"
+  "missionName": "huobi",
+  "target": {
+    "type": "object-storage",
+    "endpoint": "oss-cn-beijing.aliyuncs.com",
+    "region": "cn-beijing",
+    "bucketName": "web-spider",
+    "path": "spider/${missionName}/${requestName}/",
+    "filename": "${GMTString}.json"
+  },
+  "requests": [
+    {
+      "requestName": "sell-usdt-cny",
+      "source": {
+        "type": "http",
+        "method": "GET",
+        "url": "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=sell&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount="
+      }
     },
-    "target":{
-        "type":"object-storage",
-        "endpoint":""
+    {
+      "requestName": "buy-usdt-cny",
+      "source": {
+        "type": "http",
+        "method": "GET",
+        "url": "https://otc-api-hk.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=buy&currPage=1&payMethod=0&acceptOrder=-1&country=&blockType=general&online=1&range=0&amount="
+      }
     }
+  ]
 }
 ```

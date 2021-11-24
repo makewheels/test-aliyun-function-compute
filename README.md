@@ -1,19 +1,19 @@
 ```shell
-mvn clean compile assembly:single
+mvn compile assembly:single
 ```
 
 ### example config:
 
 ```json
 {
+  "version": "1",
   "missionName": "huobi",
   "target": {
     "type": "object-storage",
     "endpoint": "oss-cn-beijing.aliyuncs.com",
     "region": "cn-beijing",
     "bucketName": "web-spider",
-    "path": "spider/${missionName}/${requestName}/",
-    "filename": "${GMTString}.json"
+    "path": "spider/${missionName}/${requestName}/${GMTString}.json"
   },
   "requests": [
     {
